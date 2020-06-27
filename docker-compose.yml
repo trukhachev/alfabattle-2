@@ -1,0 +1,21 @@
+version: '3.5'
+
+# Volumes
+##############################################################################
+volumes:
+  postgres: ~
+
+# Services
+##############################################################################
+services:
+  postgres:
+    image: postgres:10
+    shm_size: 300m
+    environment:
+      POSTGRES_PASSWORD: docker
+      POSTGRES_USER: docker
+      POSTGRES_DB: branches
+    ports:
+      - "5432:5432"
+    volumes:
+      - "postgres:/var/lib/postgresql/data"
